@@ -13,18 +13,14 @@ namespace TestProjectXamarin.Droid.Data
 
         public void CheckNetworkConnection()
         {
-            ConnectivityManager connectivityManager = (ConnectivityManager)Application.Context.GetSystemService(Context.ConnectivityService);
+           
+            var current = Connectivity.NetworkAccess;
 
-            NetworkInfo networkInfo = connectivityManager.ActiveNetworkInfo;
-
-            if (networkInfo != null && networkInfo.IsConnectedOrConnecting)
-            {
-                IsConnected = true;
-            }
-            else
-            {
-                IsConnected = false;
-            }
+			if (current == NetworkAccess.Internet)
+			{
+				IsConnected = true;
+			}
+			else IsConnected = false;
         }
     }
 }
